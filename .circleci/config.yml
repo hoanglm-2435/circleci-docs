@@ -232,7 +232,7 @@ jobs:
           key: circleci-docs-v2-{{ .Branch }}-{{ checksum "src-api/yarn.lock"}}
       - run:
           name: Test workspace
-          command: ls -la /tmp/workspace/js/
+          command: ls -la /tmp/workspace
       - run:
           name: Install Node dependencies
           command: cd src-api; yarn install
