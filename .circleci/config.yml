@@ -208,6 +208,9 @@ jobs:
       - run:
           name: Build PDFs for server v4
           command: ./scripts/build_pdfs_server_4.sh
+      - run:
+          name: Test workspace
+          command: ls -la /tmp/workspace/js/
       - store_artifacts:
           path: release/tmp/
 
