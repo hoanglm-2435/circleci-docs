@@ -220,7 +220,8 @@ jobs:
       tag: '2.7.4-browsers'
     steps:
       - checkout
-      - *attach_workspace
+      - attach_workspace:
+          at: /tmp/workspace/js
       - run:
           name: "Create landing folder for API doc output"
           command: |
@@ -232,7 +233,7 @@ jobs:
           key: circleci-docs-v2-{{ .Branch }}-{{ checksum "src-api/yarn.lock"}}
       - run:
           name: Test workspace
-          command: ls -la /tmp/workspace
+          command: ls -la /tmp/workspace/js
       - run:
           name: Install Node dependencies
           command: cd src-api; yarn install
