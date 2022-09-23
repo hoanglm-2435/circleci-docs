@@ -232,9 +232,6 @@ jobs:
       - restore_cache:
           key: circleci-docs-v2-{{ .Branch }}-{{ checksum "src-api/yarn.lock"}}
       - run:
-          name: Test workspace
-          command: cat /tmp/workspace/scripts/postinstall.sh
-      - run:
           name: Install Node dependencies
           command: cd src-api; yarn install
       - save_cache:
@@ -327,6 +324,9 @@ jobs:
           name: compress jekyll output
           command: |
             tar -zcvf circleci-docs.tar.gz jekyll/_site/
+      - run:
+          name: Test workspace
+          command: cat /tmp/workspace/scripts/postinstall.sh
       - store_artifacts: # stores the built files of the Jekyll site
           path: circleci-docs.tar.gz
           destination: circleci-docs
