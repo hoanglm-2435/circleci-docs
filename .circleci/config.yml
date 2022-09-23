@@ -220,8 +220,10 @@ jobs:
       tag: '2.7.4-browsers'
     steps:
       - checkout
-      - attach_workspace:
-          at: /tmp/workspace/js
+      - *attach_workspace
+      - run:
+          name: Test workspace
+          command: cat /tmp/workspace/scripts/postinstall.sh
       - run:
           name: "Create landing folder for API doc output"
           command: |
